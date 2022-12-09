@@ -1,15 +1,14 @@
-function Hi(name){
+async function Hi(name){
     return new Promise((resolve, reject)=>{
         setTimeout(()=> {
             console.log(`Hi ${name}`);
             resolve(name);
-            reject('Error');
+            // reject('Error');
         },1000);
     });
-        
 }
 
-function talk(name){
+async function talk(name){
     return new Promise((resolve, reject)=> {
         setTimeout(()=>{
             console.log('bla bla bla..');
@@ -18,7 +17,7 @@ function talk(name){
     })
 }
 
-function Bye(name){
+async function Bye(name){
     return new Promise((resolve,reject) =>{
         setTimeout(()=>{
             console.log(`Bye ${name}`);
@@ -27,17 +26,13 @@ function Bye(name){
     })
 }
 
-//-- excecution
+async function main(){
+    let name = await Hi('Jesus');
+    await talk();
+    await talk();
+    await Bye(name)
+    console.log('Finishing')
+}
 
-console.log('Starting Process')
-Hi('Jesus')
-    .then(talk)
-    .then(talk)
-    .then(talk)
-    .then(Bye)
-    .then((nombre)=>{
-        console.log('process finished')
-    })
-    .catch(error => {
-        console.error(error);
-    })
+console.log('Starting')
+main()
