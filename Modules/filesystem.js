@@ -1,4 +1,4 @@
-//file system allow us to access files in order to R.U.D them
+//file system allow us to access files in order to C.R.U.D them
 const fs = require('fs');
 
 //reading a file
